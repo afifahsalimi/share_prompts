@@ -1,3 +1,5 @@
 {
-    "dart.enableSdkFormatter": false
+    "dart.enableSdkFormatter": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
 }
