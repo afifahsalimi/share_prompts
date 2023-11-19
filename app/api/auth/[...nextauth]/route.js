@@ -11,15 +11,18 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  callback: {
+  callbacks: {
     async session({ session }) {
+      console.log("ASYNC SESSIONNNNN");
       // store the user id from MongoDB to session
       const sessionUser = await User.findOne({ email: session.user.email });
       session.user.id = sessionUser._id.toString();
+      console.log("USER SESSION", JSON.stringify(session.user));
 
       return session;
     },
     async signIn({ account, profile, user, credentials }) {
+      console.log("ASYNC signIn");
       try {
         await connectToDB();
 
